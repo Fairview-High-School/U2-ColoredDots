@@ -3,48 +3,52 @@
 import turtle
 import random
 
-stage = turtle.Screen()
+screen = turtle.Screen()
 
+# The apple sits in the middle of the screen, at (0, 0)
 appleCostume = "apple-clipart.gif"
+screen.register_shape(appleCostume)
 apple = turtle.Turtle()
-
-stage.register_shape(appleCostume)
 apple.shape(appleCostume)
-apple.left(90)
-apple.hideturtle()
+
+# The plotter is the invisible turtle that draws the dots
 plotter = turtle.Turtle()
+plotter.hideturtle()
 plotter.penup()
 
-#if the width (or height) of the window is 500, then we want a number between -250 and 250
-def randomPosition():
-  x = random.randint(int(-1 * stage.window_width()/2),int(stage.window_width()/2))
-  y = random.randint(int(-1 * stage.window_height()/2), int(stage.window_height()/2))
-  return (x,y)
-
-def makeAPoint():
-  plotter.pensize(5)
-  plotter.pendown()
-  plotter.forward(0)
-  plotter.penup()
+# Half the width and height of the window.
+# If the window is 500 wide, halfWidth is 250, so x goes from -250 to 250.
+halfWidth = screen.window_width() // 2
+halfHeight = screen.window_height() // 2
 
 
-#main script
-stage.tracer(0) #this will turn off screen updates, until stage.update() is called - it speeds things up
-plotter.clear()
-plotter.penup()  #plotter is the name of my turtle/Sprite
-while (True):  #this is a forever loop.  It repeats while the (condition) is True.  And True is always True
-  plotter.goto(randomPosition())
-  apple.showturtle()
-  
-  if plotter.xcor() > 0 and plotter.distance(apple) > 100:
-    plotter.pencolor("purple")
+# ============================================================
+#  YOUR JOB: change the condition in this function.
+#  It gets the x and y of a dot, and returns the color to draw it.
+# ============================================================
+def pickColor(x, y):
+  if x > 0 and apple.distance(x, y) > 100:
+    return "purple"
   else:
-    plotter.pencolor("orange")
-    
-  # if plotter.xcor() > plotter.ycor():
-  #   plotter.pencolor("purple")
+    return "orange"
+
+  # Another condition to try:
+  # if x > y:
+  #   return "purple"
   # else:
-  #   plotter.pencolor("orange")
-  
-  makeAPoint()
-  stage.update()
+  #   return "orange"
+# ============================================================
+
+
+# main script
+screen.tracer(0)  # turn off animation so the dots draw fast
+
+for i in range(3000):  # draw 3000 dots
+  x = random.randint(-halfWidth, halfWidth)
+  y = random.randint(-halfHeight, halfHeight)
+  color = pickColor(x, y)
+  plotter.goto(x, y)
+  plotter.dot(5, color)
+  screen.update()  # show the new dot
+
+screen.mainloop()  # keep the window open when the dots are done
