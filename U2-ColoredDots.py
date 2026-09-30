@@ -1,4 +1,5 @@
 #turtle documentation:  https://docs.python.org/3/library/turtle.html
+#https://inventwithpython.com/blog/complete-list-tkinter-colors-valid-and-tested.html
 
 import turtle
 import random
@@ -30,13 +31,13 @@ def pickColor(x, y):
   if x > 0 and apple.distance(x, y) > 100:
     return "purple"
   else:
-    return "orange"
+    return "darkorange1"
 
   # Another condition to try:
   # if x > y:
   #   return "purple"
   # else:
-  #   return "orange"
+  #   return "darkorange1"
 # ============================================================
 
 
