@@ -11,7 +11,7 @@ appleCostume = "apple-clipart.gif"
 screen.register_shape(appleCostume)
 apple = turtle.Turtle()
 apple.shape(appleCostume)
-apple.hideturtle()
+#apple.hideturtle()
 
 # The plotter is the invisible turtle that draws the dots
 plotter = turtle.Turtle()
@@ -30,7 +30,7 @@ halfHeight = screen.window_height() // 2
 # ============================================================
 def pickColor(x_position, y_position):
   distance_to_apple = apple.distance(x_position, y_position)
-  if x_position < y_position:
+  if distance_to_apple < 125:
     return "purple"
   else:
     return "darkorange1"
