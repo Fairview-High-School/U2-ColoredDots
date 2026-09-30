@@ -18,23 +18,23 @@ plotter.hideturtle()
 plotter.penup()
 
 # Half the width and height of the window.
-# If the window is 500 wide, halfWidth is 250, so x goes from -250 to 250.
+# If the window is 500 wide, halfWidth is 250, so x_position goes from -250 to 250.
 halfWidth = screen.window_width() // 2
 halfHeight = screen.window_height() // 2
 
 
 # ============================================================
 #  YOUR JOB: change the condition in this function.
-#  It gets the x and y of a dot, and returns the color to draw it.
+#  It gets the x_position and y_position of a dot, and returns the color to draw it.
 # ============================================================
-def pickColor(x, y):
-  if x > 0 and apple.distance(x, y) > 100:
+def pickColor(x_position, y_position):
+  if x_position > 0 and apple.distance(x_position, y_position) > 100:
     return "purple"
   else:
     return "darkorange1"
 
   # Another condition to try:
-  # if x > y:
+  # if x_position > y_position:
   #   return "purple"
   # else:
   #   return "darkorange1"
@@ -45,10 +45,10 @@ def pickColor(x, y):
 screen.tracer(0)  # turn off animation so the dots draw fast
 
 for i in range(3000):  # draw 3000 dots
-  x = random.randint(-halfWidth, halfWidth)
-  y = random.randint(-halfHeight, halfHeight)
-  color = pickColor(x, y)
-  plotter.goto(x, y)
+  x_position = random.randint(-halfWidth, halfWidth)
+  y_position = random.randint(-halfHeight, halfHeight)
+  color = pickColor(x_position, y_position)
+  plotter.goto(x_position, y_position)
   plotter.dot(5, color)
   screen.update()  # show the new dot
 
