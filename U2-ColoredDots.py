@@ -54,5 +54,6 @@ for i in range(3000):  # draw 3000 dots
   plotter.dot(5, color)
   if i % 100 == 0:  # every 100 dots...
     screen.update()  # ...show the new dots
-
+    
+screen.update()  # show the last few dots
 screen.mainloop()  # keep the window open when the dots are done
